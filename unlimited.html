@@ -14,7 +14,7 @@
 
  
 </head>
- <body style="background-color:rgb(14, 14, 118);">
+ <body onload="LoadProc();" style="background-color:rgb(14, 14, 118);">
 
 
 
@@ -23,18 +23,23 @@
     <div class="content_item">
     <h1>Todo List</h1>
 
-
+<form id="form">
     <input type="text" id="input" class="form-control"><button>PUSH！</button><br>
+</form>
 
-<table>
-    <tr>
-        <th>作成日</th>
+<table ="table">
+    <tr >
+        <th >作成日</th>
         <th>タスク</th>
         <th>更新</th>
         <th>削除</th>
         
     </tr>
 </table>
+
+<ul class="list text" id="ul" id="DateTimeDisp">
+  
+</ul>
 
 </div>
 </div>
@@ -44,6 +49,44 @@
     console.log("hello");
 
     document.getElementById("input")
+
+ 
+const form = document.getElementById("form");
+const input = document.getElementById("input");
+const ul = document.getElementById("ul");
+
+const table = document.getElementById("table");
+
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log(input.value);
+    add();
+    });
+
+function add() {
+    const li = document.createElement("li");
+    li.innerText = input.value;
+    li.classList.add("list-group-item");
+    ul.appendChild(li);
+    
+}
+
+var now = new Date();
+    function LoadProc() {
+      var target = document.getElementById("DateTimeDisp");
+
+      var Year = now.getFullYear();
+      var Month = now.getMonth()+1;
+      var Date = now.getDate();
+      var Hour = now.getHours();
+      var Min = now.getMinutes();
+      var Sec = now.getSeconds();
+
+      target.innerHTML = Year + "年" + Month + "月" + Date + "日" + Hour + ":" + Min + ":" + Sec;
+    }
+
+
 </script>
 
 
