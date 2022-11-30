@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-  });
-  
-  //追加するコード
-  Route::get('/test', function () {
+});
+
+Route::get('/test', function () {
     return 'test';
   });
-  
